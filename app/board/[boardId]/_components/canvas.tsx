@@ -1,11 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Info } from "./info";
 import { Participants } from "./participants";
 import { Toolbar } from "./toolbar";
-import { CanvasMode, CanvasState } from "@/types/canvas";
-import { useHistory, useCanRedo, useCanUndo } from "@liveblocks/react/suspense";
+import { Camera, CanvasMode, CanvasState } from "@/types/canvas";
+import {
+  useHistory,
+  useCanRedo,
+  useCanUndo,
+  useMutation,
+} from "@liveblocks/react/suspense";
+import { CursorsPresence } from "./cursors-presence";
+import { pointerEventToCanvasPoint } from "@/lib/pointer-event-to-canvas-point";
 
 type CanvasProps = {
   boardId: string;
@@ -15,11 +22,43 @@ export const Canvas = ({ boardId }: CanvasProps) => {
   const [canvasState, setCanvasState] = useState<CanvasState>({
     mode: CanvasMode.None,
   });
+  const [camera, setCamera] = useState<Camera>({
+    x: 0,
+    y: 0,
+  });
 
   const history = useHistory();
   const canUndo = useCanUndo();
   const canRedo = useCanRedo();
 
+  const onWheel = useCallback((e: React.WheelEvent) => {
+    setCamera((camera) => ({
+      x: camera.x - e.deltaX,
+      y: camera.y - e.deltaY,
+    }));
+  }, []);
+
+  const onPointerMove = useMutation(
+    ({ setMyPresence }, e: React.PointerEvent) => {
+      e.preventDefault();
+
+      const current = pointerEventToCanvasPoint(e, camera);
+
+      setMyPresence({
+        cursor: current,
+      });
+    },
+    []
+  );
+
+  const onPointerLeave = useMutation(
+    ({ setMyPresence }, e: React.PointerEvent) => {
+      e.preventDefault();
+
+      setMyPresence({ cursor: null });
+    },
+    []
+  );
   return (
     <main className="size-full relative bg-neutral-100 touch-none">
       <Info boardId={boardId} />
@@ -36,6 +75,16 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         canUndo={canUndo}
         canRedo={canRedo}
       />
+      <svg
+        className="size-full"
+        onWheel={onWheel}
+        onPointerMove={onPointerMove}
+        onPointerLeave={onPointerLeave}
+      >
+        <g>
+          <CursorsPresence />
+        </g>
+      </svg>
     </main>
   );
 };

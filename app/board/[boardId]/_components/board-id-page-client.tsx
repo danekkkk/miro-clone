@@ -11,7 +11,7 @@ type BoardIdPageClientProps = {
 
 export const BoardIdPageClient = ({ boardId }: BoardIdPageClientProps) => {
   return (
-    <LiveblocksProvider authEndpoint="/api/liveblocks-auth">
+    <LiveblocksProvider authEndpoint="/api/liveblocks-auth" throttle={16}>
       <Room roomId={boardId} fallback={<Loading />}>
         <Canvas boardId={boardId} />
       </Room>
