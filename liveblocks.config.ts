@@ -19,8 +19,8 @@ declare global {
       id: string;
       info: {
         // Example properties, for useSelf, useUser, useOthers, etc.
-        // name: string;
-        // avatar: string;
+        name?: string;
+        picture?: string;
       };
     };
 
@@ -47,5 +47,6 @@ declare global {
 }
 
 const publicApiKey = process.env.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_API_KEY!;
+const secretApiKey = process.env.NEXT_PUBLIC_LIVEBLOCKS_SECRET_API_KEY!;
 
-export { publicApiKey };
+export { publicApiKey, secretApiKey };

@@ -3,7 +3,6 @@
 import { LiveblocksProvider } from "@liveblocks/react/suspense";
 import { Room } from "@/components/room";
 import { Canvas } from "./canvas";
-import { publicApiKey } from "@/liveblocks.config";
 import { Loading } from "./loading";
 
 type BoardIdPageClientProps = {
@@ -12,7 +11,7 @@ type BoardIdPageClientProps = {
 
 export const BoardIdPageClient = ({ boardId }: BoardIdPageClientProps) => {
   return (
-    <LiveblocksProvider publicApiKey={publicApiKey}>
+    <LiveblocksProvider authEndpoint="/api/liveblocks-auth">
       <Room roomId={boardId} fallback={<Loading />}>
         <Canvas boardId={boardId} />
       </Room>
