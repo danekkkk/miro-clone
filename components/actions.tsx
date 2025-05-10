@@ -52,8 +52,10 @@ export const Actions = ({
   const onOpenModal = () => openModal(id, title);
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
+    <DropdownMenu modal={false}>
+      <DropdownMenuTrigger asChild onClick={(e) => e.preventDefault()}>
+        {children}
+      </DropdownMenuTrigger>
       <DropdownMenuContent
         onClick={(e) => e.stopPropagation()}
         side={side}

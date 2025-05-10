@@ -46,30 +46,30 @@ export const RenameModal = () => {
           <DialogDescription>
             Enter a new title for this board
           </DialogDescription>
-
-          <form onSubmit={onSubmit} className="space-y-4">
-            <Input
-              disabled={pending}
-              required
-              maxLength={60}
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Board title"
-              autoFocus
-            />
-
-            <DialogFooter>
-              <DialogClose asChild>
-                <Button type="button" variant="outline">
-                  Cancel
-                </Button>
-              </DialogClose>
-              <Button disabled={pending} type="submit">
-                Save
-              </Button>
-            </DialogFooter>
-          </form>
         </DialogHeader>
+
+        <form onSubmit={onSubmit} className="space-y-4">
+          <Input
+            disabled={pending}
+            required
+            maxLength={60}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Board title"
+            autoFocus
+          />
+
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button type="button" variant="outline">
+                Cancel
+              </Button>
+            </DialogClose>
+            <Button disabled={pending} type="submit">
+              Save
+            </Button>
+          </DialogFooter>
+        </form>
       </DialogContent>
     </Dialog>
   );

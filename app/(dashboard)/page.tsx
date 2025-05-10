@@ -8,7 +8,12 @@ type DashboardPageProps = {
 };
 
 const DashboardPage = ({ searchParams }: DashboardPageProps) => {
-  return <DashboardClient searchParams={searchParams} />;
+  return (
+    <DashboardClient 
+      search={searchParams.search} 
+      favorites={searchParams.favorites} 
+    />
+  );
 };
 
 export default DashboardPage;
