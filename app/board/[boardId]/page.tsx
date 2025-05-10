@@ -1,4 +1,4 @@
-import { Canvas } from "./_components/canvas";
+import { BoardIdPageClient } from "./_components/board-id-page-client";
 
 type BoardIdPageProps = {
   params: {
@@ -7,9 +7,7 @@ type BoardIdPageProps = {
 };
 
 const BoardIdPage = ({ params }: BoardIdPageProps) => {
-  const { boardId } = params;
-
-  return <Canvas boardId={boardId} />;
+  return <BoardIdPageClient boardId={params.boardId} />;
 };
 
 export default BoardIdPage;
