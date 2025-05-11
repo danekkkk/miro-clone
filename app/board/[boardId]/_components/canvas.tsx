@@ -336,7 +336,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
   }, [selections]);
 
   return (
-    <main className="size-full relative bg-neutral-100 touch-none">
+    <main className="size-full relative bg-neutral-100 touch-none overflow-hidden">
       <Info boardId={boardId} />
       <Participants />
       <Toolbar
