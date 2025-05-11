@@ -30,6 +30,7 @@ import { LayerPreview } from "./layer-preview";
 import { connectionIdToColor } from "@/lib/connectionId-to-color";
 import { SelectionBox } from "./selection-box";
 import { resizeBounds } from "@/lib/resize-bounds";
+import { SelectionTools } from "./selection-tools";
 
 type CanvasProps = {
   boardId: string;
@@ -307,6 +308,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         canUndo={canUndo}
         canRedo={canRedo}
       />
+      <SelectionTools camera={camera} setLastUsedColor={setLastUsedColor} />
       <svg
         className="size-full"
         onWheel={onWheel}
