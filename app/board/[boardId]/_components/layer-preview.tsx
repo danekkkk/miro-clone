@@ -4,6 +4,7 @@ import { LayerType } from "@/types/canvas";
 import { useStorage } from "@liveblocks/react/suspense";
 import { memo } from "react";
 import { Rectangle } from "./rectangle";
+
 type LayerPreviewProps = {
   id: string;
   onLayerPointerDown: (e: React.PointerEvent, layerId: string) => void;
