@@ -47,6 +47,7 @@ export const OrgSidebar = () => {
 
       window.location.href = redirectUrl;
     } catch (error) {
+      console.error(error);
       toast.error("Something went wrong");
     } finally {
       setPending(false);
