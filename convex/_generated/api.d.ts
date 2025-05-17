@@ -15,6 +15,7 @@ import type {
 } from "convex/server";
 import type * as board from "../board.js";
 import type * as boards from "../boards.js";
+import type * as stripe from "../stripe.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -27,6 +28,7 @@ import type * as boards from "../boards.js";
 declare const fullApi: ApiFromModules<{
   board: typeof board;
   boards: typeof boards;
+  stripe: typeof stripe;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,
