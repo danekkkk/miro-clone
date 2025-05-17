@@ -17,7 +17,7 @@
 This Miro clone is a powerful collaborative whiteboard application that enables teams to work together in real-time. Create, edit, and share interactive boards with multiple users simultaneously. Perfect for brainstorming, planning, designing, and collaborating remotely.
 
 ## 🎮 Demo 
-[Miro Clone Demo](https://miro-clone-kcn9zbcap-daneks-projects-368e2b89.vercel.app/)
+[Miro Clone Demo](https://miro-clone-gamma.vercel.app/)
 
 ## ✨ Features
 
