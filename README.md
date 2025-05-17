@@ -5,7 +5,7 @@
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
-- [Demo]("#-demo")
+- [Demo](#-demo)
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
 - [Getting Started](#-getting-started)
