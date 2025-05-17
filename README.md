@@ -4,13 +4,13 @@
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Demo]("#demo")
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [Deployment](#deployment)
+- [Overview](#-overview)
+- [Demo]("#-demo")
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Getting Started](#-getting-started)
+- [Project Structure](#-project-structure)
+- [Deployment](#-deployment)
 
 ## 🔭 Overview
 
