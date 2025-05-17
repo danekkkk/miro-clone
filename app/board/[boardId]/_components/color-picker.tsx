@@ -45,3 +45,5 @@ const ColorButton = memo(({ onClick, color }: ColorButtonProps) => {
     </button>
   );
 });
+
+ColorButton.displayName = "ColorButton";

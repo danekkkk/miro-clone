@@ -1,18 +1,17 @@
 import { DashboardClient } from "./_components/dashboard-client";
 
-type DashboardPageProps = {
-  searchParams: {
+type Props = {
+  searchParams: Promise<{
     search?: string;
     favorites?: string;
-  };
+  }>;
 };
 
-const DashboardPage = ({ searchParams }: DashboardPageProps) => {
+const DashboardPage = async ({ searchParams }: Props) => {
+  const params = await searchParams;
+
   return (
-    <DashboardClient 
-      search={searchParams.search} 
-      favorites={searchParams.favorites} 
-    />
+    <DashboardClient search={params.search} favorites={params.favorites} />
   );
 };
 
