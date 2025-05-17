@@ -7,6 +7,8 @@ import { Rectangle } from "./rectangle";
 import { Ellipse } from "./ellipse";
 import { Text } from "./text";
 import { Note } from "./note";
+import { Path } from "./path";
+import { typeColorToCss } from "@/lib/type-color-to-css";
 type LayerPreviewProps = {
   id: string;
   onLayerPointerDown: (e: React.PointerEvent, layerId: string) => void;
@@ -58,8 +60,19 @@ export const LayerPreview = memo(
             selectionColor={selectionColor}
           />
         );
+      case LayerType.Path:
+        return (
+          <Path
+            key={id}
+            points={layer.points}
+            onPointerDown={(e) => onLayerPointerDown(e, id)}
+            x={layer.x}
+            y={layer.y}
+            fill={layer.fill ? typeColorToCss(layer.fill) : "#CCC"}
+            stroke={selectionColor}
+          />
+        );
       default:
-        console.warn(`Unsupported layer type: ${layer.type}`);
         return null;
     }
   }
