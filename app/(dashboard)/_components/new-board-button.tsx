@@ -6,6 +6,8 @@ import { useApiMutation } from "@/hooks/use-api-mutation";
 import { cn } from "@/lib/utils";
 import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useProModal } from "@/store/use-pro-modal";
+
 type NewBoardButtonProps = {
   orgId: string;
   disabled?: boolean;
@@ -13,6 +15,7 @@ type NewBoardButtonProps = {
 
 export const NewBoardButton = ({ orgId, disabled }: NewBoardButtonProps) => {
   const { mutate: createNewBoard, pending } = useApiMutation(api.board.create);
+  const { onOpen } = useProModal();
   const router = useRouter();
 
   const handleCreateNewBoard = () => {
@@ -21,7 +24,10 @@ export const NewBoardButton = ({ orgId, disabled }: NewBoardButtonProps) => {
         toast.success("Board created");
         router.push(`/board/${id}`);
       })
-      .catch(() => toast.error("Failed to create board"));
+      .catch(() => {
+        toast.error("Failed to create board");
+        onOpen();
+      });
   };
 
   return (
